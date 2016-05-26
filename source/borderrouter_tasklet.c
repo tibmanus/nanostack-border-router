@@ -133,6 +133,7 @@ static void borderrouter_tasklet(arm_event_s *event);
 static void initialize_channel_list(uint32_t channel);
 static void start_6lowpan(const uint8_t *backhaul_address);
 static void load_config(void);
+void borderrouter_callback();
 
 void border_router_start(void)
 {
@@ -643,6 +644,7 @@ static void app_parse_network_event(arm_event_s *event)
                 net_6lowpan_state = INTERFACE_CONNECTED;
                 tr_debug("RF interface addresses:");
                 print_interface_addr(net_6lowpan_id);
+                borderrouter_callback();
             }
         }
             /* Network connection Ready */
