@@ -130,7 +130,15 @@ static void borderrouter_tasklet(arm_event_s *event);
 static void initialize_channel_list(uint32_t channel);
 static void start_6lowpan(const uint8_t *backhaul_address);
 static void load_config(void);
-void borderrouter_callback();
+/* Declare CPP function  */
+#ifdef __cplusplus
+#define EXTERNC extern "C"
+#else
+#define EXTERNC
+#endif
+EXTERNC void borderrouter_callback(); 
+
+
 
 void border_router_start(void)
 {
